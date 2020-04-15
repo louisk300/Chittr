@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { FlatList } from 'react-native-gesture-handler';
 import LoginScreen from './LoginScreen';
 import EditProfile from './EditProfile'
-import RNFetchBlob from 'react-native-fetch-blob';
+//import RNFetchBlob from 'react-native-fetch-blob';
 
 
 
@@ -65,19 +65,19 @@ class AccountScreen extends Component {
             });
     }
   //Gets the current logged in user's profile photo
-    GetPhoto () {
+    //GetPhoto () {
 
-        let url = "http://10.0.2.2:3333/api/v0.0.5/user/" + this.state.id + "/photo";
-        RNFetchBlob.fetch('GET', url)
-            .then((response) => {
-                let image = response.base64();
-                this.setState({ photo: "data:image/png;base64," + image });
-                console.log("Got photo...");
-            })
-            .catch((e) => {
-                console.log("Error on getting photo: " + e);
-            });
-    }
+    //    let url = "http://10.0.2.2:3333/api/v0.0.5/user/" + this.state.id + "/photo";
+    //    RNFetchBlob.fetch('GET', url)
+    //        .then((response) => {
+    //            let image = response.base64();
+    //            this.setState({ photo: "data:image/png;base64," + image });
+    //            console.log("Got photo...");
+    //        })
+    //        .catch((e) => {
+    //            console.log("Error on getting photo: " + e);
+    //        });
+    //}
         
 
    //Stores data using async storage    
@@ -122,7 +122,7 @@ class AccountScreen extends Component {
 
     componentDidMount() {
         this.GetLoginData();
-        this.GetPhoto();
+        //this.GetPhoto();
     }
 
   
@@ -131,19 +131,17 @@ class AccountScreen extends Component {
         const navigation = this.props.navigation;
         return (
 
-            <View style={{ flexDirection: 'column' }}>
+            <View style={styles.viewStyle}>
+
+                <View style={styles.Text}> 
                 <Text>Welcome! </Text>
-                <Image
-                    source={{
-                        uri:this.state.GetPhoto
-                    }}
-                    style={styles.profilePicture}
-                />
+                
                 <Text>{this.state.firstname}</Text>
                 <Text>{this.state.secondname}</Text>
                 <Text>{this.state.email}</Text>
-                <Text>Lets post a chit shall we?</Text>
-
+                    <Text>Lets post a chit shall we?</Text>
+                </View>
+                <View style={styles.myButton}>
                 <Button
                     title="Post a Chit"
                     onPress={() => navigation.navigate('PostChit')}
@@ -153,22 +151,80 @@ class AccountScreen extends Component {
                     title="Search"
                     onPress={() => navigation.navigate('SearchScreen')}
                 />
-
+               
                 <Button
                     title="Edit Profile"
                     onPress={() => navigation.navigate('EditProfile')}
                 />
-
+                    <View style={styles.myLogout}> 
                 <Button
                     title="Click here to logout"
                     onPress={() => { this.Logout() }}
             
-                />
+                        />
+                    </View>
+                </View>
 
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    viewStyle: {
+        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: 'lightblue',
+    },
+    viewTextInput: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        margin: 10,
+        height: 200,
+        flex: 1,
+        padding: 5
+    },
+
+    myButton: {
+        paddingTop: 15,
+        paddingLeft: 110,
+        paddingRight: 120,
+        borderRadius: 20,
+        height: 320,
+        width: 330,
+        position: 'absolute',
+        top: 0.2,
+        left: 130,
+        color: 'lightblue',
+
+    },
+
+    Text: {
+        position: 'absolute',
+        top: 100,
+        left: 20,
+        fontSize:50
+    },
+        myLogout: {
+            paddingTop: 15,
+            paddingLeft: 110,
+            paddingRight: 120,
+            borderRadius: 20,
+            height: 320,
+            width: 330,
+            position: 'absolute',
+            top: 450,
+            left: 20,
+
+
+        
+
+    }
+
+
+
+
+});
 
 
 export default AccountScreen;

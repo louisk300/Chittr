@@ -80,7 +80,8 @@ class SearchScreen extends Component {
 const styles = StyleSheet.create({
   viewStyle: {
     justifyContent: 'center',
-    flex: 1,
+        flex: 1,
+        backgroundColor:'lightblue'
   },
   textStyle: {
     padding: 10,

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import HomeScreen from './screens/HomeScreen'
-import ProfileScreen from './screens/ProfileScreen'
+import RegisterScreen from './screens/RegisterScreen'
 import FeedScreen from './screens/FeedScreen'
 import LoginScreen from './screens/LoginScreen'
 import AccountScreen from './screens/AccountScreen'
@@ -53,7 +53,7 @@ function MyTabs() {
             />
             <Tab.Screen
                 name="Register"
-                component={ProfileScreen}
+                component={RegisterScreen}
                 options={{ tabBarLabel: 'Register ' }}
             />
             <Tab.Screen

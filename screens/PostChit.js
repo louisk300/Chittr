@@ -90,18 +90,52 @@ class PostChit extends Component {
 
     render() {
         return (
-            <View style={{ flexDirection: 'column' }}>
+            <View style={styles.viewStyle}>
+             <View style={styles.viewTextInput}>
                 <TextInput
                     onChangeText={(text) => this.setState({ chit_content: text })}
-                />
+                    />
+                    </View>
+                <View style={styles.myButton}>
                 <Button
                     title="Post Chit"
                     onPress={() => { this.PostChit() }}
                 />
-            </View>
+                </View>
+                </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    viewStyle: {
+        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: 'lightblue',
+    },
+    viewTextInput: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        borderRadius: 20,
+        margin: 20,
+        height: 200,
+        flex: 5,
+        padding: 5
+    },
+
+    myButton: {
+        paddingTop: 150,
+        paddingLeft: 50,
+        paddingRight: 50,
+        borderRadius: 20,
+        height: 300
+
+
+    }
+
+
+
+});
 
 export default PostChit;
 

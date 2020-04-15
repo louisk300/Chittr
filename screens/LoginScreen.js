@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, Button, Alert, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import ProfileScreen from './ProfileScreen';
 import AccountScreen from './AccountScreen';
 import AsyncStorage from '@react-native-community/async-storage';
+
 
 
 class LoginScreen extends Component {
@@ -69,8 +69,8 @@ class LoginScreen extends Component {
         const navigation = this.props.navigation;
         return (
 
-            <View style={{ flexDirection: 'column' }}>
-
+            <View style={styles.viewStyle}>
+            <View style={styles.viewTextInput}>
                 <Text>Email</Text>
                 <TextInput
                     onChangeText={(text) => this.setState({ email: text })}
@@ -82,7 +82,9 @@ class LoginScreen extends Component {
                     onChangeText={(text) => this.setState({ password: text })}
                     value={this.state.password}
                     secureTextEntry
-                />
+                    />
+                </View>
+                <View style={styles.myButton}>
                 <Button
                     title="Login"
   
@@ -94,7 +96,8 @@ class LoginScreen extends Component {
                     title="Or Click Here To Register"
                     onPress={() => navigation.navigate('Register')}
             
-              />
+                    />
+                    </View>
 
 
             </View>
@@ -103,6 +106,35 @@ class LoginScreen extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    viewStyle: {
+        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: 'lightblue',
+    },
+    viewTextInput: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        margin: 10,
+        height: 200,
+        flex:1,
+        padding: 5
+    },
+
+    myButton: {
+        paddingTop: 15,
+        paddingLeft: 25,
+        paddingRight: 25,
+        borderRadius: 20,
+        height: 320
+        
+    }
+
+        
+        
+    
+});
+    
 
 
 export default LoginScreen;

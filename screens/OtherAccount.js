@@ -142,10 +142,7 @@ class OtherAccount extends Component {
         return (
             <View style={styles.viewStyle}>
                 <View style={styles.viewAvatar}>
-                    <Avatar
-                        source={{ uri: this.state.photo }}
-                        onPress={() => this.viewUploadPhoto()}
-                    />
+                    
                 </View>
 
                 <View style={styles.viewNameText}>
@@ -155,19 +152,21 @@ class OtherAccount extends Component {
                     </Text>
                 </View>
 
-                <View style={styles.viewFollowButton}>
+                <View style={styles.myButton}>
                     <Button
                         title={this.state.isFollowing == false ? 'Follow' : 'Unfollow'}
                         onPress={() => this.followPoint()}
                     />
+                    <View style={styles.myButton2}>
                         <Button
                             title={"View Followers"}
                         onPress = {() => navigation.navigate('OtherAccountFollows')}
-                />
+                        />
+                    </View>
                 </View>
 
                 <View style={styles.viewChitTitleText}>
-                    <Text>Chits</Text>
+                    <Text>Chits:</Text>
                 </View>
 
                 <View style={styles.viewChitBodyText}>
@@ -188,14 +187,26 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     viewNameText: {
-        fontSize: 22,
         fontWeight: 'bold',
         alignSelf: 'center',
     },
-    viewFollowButton: {
-        paddingTop: 15,
-        paddingLeft: 150,
-        paddingRight: 150,
+    myButton: {
+        paddingTop: 150,
+        paddingLeft: 40,
+        paddingRight: 40,
+        borderRadius: 20,
+        height: 300
+    },
+
+    myButton2: {
+        paddingTop: 1,
+        paddingLeft: 40,
+        paddingRight: 40,
+        borderRadius: 20,
+        position: 'absolute',
+        top: 10,
+        left: 75,
+        height: 320,
     },
     viewChitTitleText: {
         fontSize: 20,
@@ -203,12 +214,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         paddingTop: 15,
         paddingBottom: 15,
+        position: 'absolute',
+        top: 300,
+        left: 5
+        
     },
     viewChitBodyText: {
         fontSize: 14,
         paddingTop: 10,
-        paddingBottom: 10,
-        backgroundColor: '#DCDCDC',
+        paddingBottom: 20,
+        position: 'absolute',
+        top: 350,
+        left: 5
     },
 });
 

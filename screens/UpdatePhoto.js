@@ -81,12 +81,9 @@ class UpdatePhoto extends Component {
                 />
 
                 <Button
-                    title="Capture"
+                    title="Capture and Save"
                     onPress={this.takePicture.bind(this)}
                     style={styles.capture}
-                />
-                    <Button
-                    title="Save Changes"
                 />
                 </View>
             
